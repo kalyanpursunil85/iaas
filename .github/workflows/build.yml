@@ -1,0 +1,27 @@
+name: provision infrastructure v1 on creation
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  infra-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v2'
+      with:
+        project_id: 'perfect-day-446407-i0'
+        workload_identity_provider: 'projects/345931802469/locations/global/workloadIdentityPools/github/providers/my-repo'
+
+    - uses: hashicorp/setup-terraform@v3
+
+    - name: terraform init
+      run: cd terraform && ./plan.sh
+
+    - name: terraform apply
+      run: cd terraform && ./apply.sh
+
