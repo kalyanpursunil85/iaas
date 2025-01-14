@@ -6,9 +6,3 @@ terraform {
     }
   }
 }
-#
-# provider "google" {
-#   credentials = file("/Users/skalyanpur/.config/gcloud/application_default_credentials.json")
-#   project = "perfect-day-446407-i0"
-#   region = "us-west1"
-# }
