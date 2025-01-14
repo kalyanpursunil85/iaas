@@ -1,4 +1,4 @@
-name: provision infrastructure v1 on creation
+name: provision infrastructure
 on:
   workflow_dispatch:
 permissions:
